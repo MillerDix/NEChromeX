@@ -11,10 +11,10 @@ body {
     -khtml-user-select: none;
     user-select: none;
 }
-div {
-    margin: 0;
-    padding: 0;
-    border: 0;
+div, ul {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
     /*font-size: 0; inline-block造成div之间存在间隔*/
 }
 h1,h2,h3 {
@@ -30,6 +30,15 @@ p, img {
 }
 .no-display {
     display: none;
+}
+.table {
+    display: table;
+}
+.table-row {
+    display: table-row;
+}
+.table-cell {
+    display: table-cell;
 }
 
 /* section */
@@ -143,6 +152,13 @@ p, img {
     width: 30%;
     height: 100px;
 }*/
+div.sidebar {
+    width: 15%;
+    overflow: hidden;
+}
+div.main-content {
+    width: 70%;
+}
 
 
 
@@ -189,12 +205,20 @@ span.playBtn img {
     margin-top: 9px;
 }
 ul.mylist {
-    width: 200px;
 }
 li.myalbum {
     list-style: none;
-    color: red;
-    border: 1px solid blue;
+    color: maroon;
+    border: none;
+    background-color: transparent;
+    margin-top: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 5px;
+}
+li.myalbum:hover {
+    background-color: #bac4d1;
 }
 .quote {
     text-align: center;

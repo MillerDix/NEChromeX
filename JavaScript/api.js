@@ -16,6 +16,7 @@ APIModule.api = {
     mylist: main_domain+'/mylist',
     playlist_detail: main_domain+'/playlist'
 }
+APIModule.currentPlaylist = '';
 // 我的歌单
 APIModule.myList = function() {
     // 登录
@@ -57,12 +58,24 @@ APIModule.myList = function() {
 }
 
 APIModule.playlistDetail = function(playlistId) {
+    if (playlistId === this.currentPlaylist) {
+        return;
+    }
+    this.currentPlaylist = playlistId;
+    let self = this;
+    $(".playlist_detail").empty();
     let playlist_detail = $.post(this.api.playlist_detail+"/"+playlistId, "", function() {
         console.log('fetching list detail');
     })
     .done(function(data) {
         console.log(data);
-        $("#player").attr("src", data[14]['mp3Url']);
+        for (let i = 0; i < data.length; i++) {
+            let li = $("<li class='myalbum'>" + data[i]['name'] + "</li>");
+            li.click(function() {
+                self.playSong(data[i]['mp3Url']);
+            })
+            $(".playlist_detail").append(li);
+        }
     })
     .fail(function(e) {
         console.log(e);
@@ -70,4 +83,8 @@ APIModule.playlistDetail = function(playlistId) {
     .always(function() {
         console.log('list detail complete');
     });
+}
+
+APIModule.playSong = function(songUrl) {
+    $("#player").attr("src", songUrl);
 }
