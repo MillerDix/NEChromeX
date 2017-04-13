@@ -19,7 +19,7 @@
                 $(".wrap").hide();
                 $(".music-wrap").removeClass('no-display');
 
-                // 登录
+                // 请求本人创建歌单列表
                 APIModule.myList();
             }else{
                 $(".background-cover").removeClass("blur");

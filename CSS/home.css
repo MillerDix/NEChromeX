@@ -170,6 +170,21 @@ span.playBtn {
     margin-left: 10px;
     cursor: pointer;
 }
+.close-btn {
+    display: inline;
+    line-height: 50px;
+    /*padding-top: 9px;*/
+    height: 50px;
+    width: 50px;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 10;
+}
 span.playBtn img {
     margin-top: 9px;
 }
