@@ -16,7 +16,9 @@ APIModule.api = {
     mylist: main_domain+'/mylist',
     playlist_detail: main_domain+'/playlist'
 }
-APIModule.currentPlaylist = '';
+// 当前选中信息
+APIModule.currentSelection = {playlist: {id: '', element: ''}, song: {id: '', element: ''}};
+
 // 我的歌单
 APIModule.myList = function() {
     // 登录
@@ -45,6 +47,17 @@ APIModule.myList = function() {
 
                 // 获取歌单详情
                 li.click(function() {
+                    // 重复点击控制
+                    if (self.currentSelection.playlist.id === data[i]['id']) {
+                        return;
+                    }
+                    // 选中状态控制
+                    if (self.currentSelection.playlist.element !== '') {
+                        self.currentSelection.playlist.element.css("background-color", "transparent");
+                    }
+                    li.css("background-color", "#bac4d1");
+                    self.currentSelection.playlist.id = data[i]['id'];
+                    self.currentSelection.playlist.element = li;
                     self.playlistDetail(data[i]['id']);
                 })
                 $(".mylist").append(li);
@@ -57,22 +70,34 @@ APIModule.myList = function() {
     .always(function() {console.log('mylist complete');});
 }
 
+// 播放列表内容
 APIModule.playlistDetail = function(playlistId) {
-    if (playlistId === this.currentPlaylist) {
-        return;
-    }
-    this.currentPlaylist = playlistId;
     let self = this;
     $(".playlist_detail").empty();
     let playlist_detail = $.post(this.api.playlist_detail+"/"+playlistId, "", function() {
         console.log('fetching list detail');
     })
     .done(function(data) {
-        console.log(data);
         for (let i = 0; i < data.length; i++) {
             let li = $("<li class='myalbum'>" + data[i]['name'] + "</li>");
             li.click(function() {
+                // 重复点击控制
+                if (self.currentSelection.song.id === data[i]['id']) {
+                    return;
+                }
+                console.log(data[i]);
+                // 选中状态控制
+                if (self.currentSelection.song.element !== '') {
+                    self.currentSelection.song.element.css("background-color", "transparent");
+                }
+                li.css("background-color", "#bac4d1");
+                self.currentSelection.song.id = data[i]['id'];
+                self.currentSelection.song.element = li;
+                // 歌曲信息展示
+                $("#playing-pic").attr("src", data[i]['album']['picUrl']);
+                // 播放
                 self.playSong(data[i]['mp3Url']);
+
             })
             $(".playlist_detail").append(li);
         }
@@ -85,6 +110,7 @@ APIModule.playlistDetail = function(playlistId) {
     });
 }
 
+// 播放 通过songUrl
 APIModule.playSong = function(songUrl) {
-    $("#player").attr("src", songUrl);
+    // $("#player").attr("src", songUrl);
 }
