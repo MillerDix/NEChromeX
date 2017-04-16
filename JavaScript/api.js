@@ -112,5 +112,5 @@ APIModule.playlistDetail = function(playlistId) {
 
 // 播放 通过songUrl
 APIModule.playSong = function(songUrl) {
-    // $("#player").attr("src", songUrl);
+    $("#player").attr("src", songUrl);
 }

@@ -3,13 +3,16 @@
 from netease_api import Netease
 from flask import Flask
 from flask import jsonify
+from tornado.wsgi import WSGIContainer
+from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
 api = Netease()
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'pai ni ma de xu'
+    return 'NEChromX at your service!'
 
 @app.route('/test', methods=['POST'])
 def test():
@@ -33,4 +36,6 @@ def playlist(playlist_id):
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run()
+    http_server = HTTPServer(WSGIContainer(app))
+    http_server.listen(5000)
+    IOLoop.instance().start()
