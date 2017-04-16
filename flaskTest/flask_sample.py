@@ -6,9 +6,11 @@ from flask import jsonify
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
+from flask_compress import Compress
 api = Netease()
 
 app = Flask(__name__)
+Compress(app)
 
 @app.route('/')
 def hello_world():
@@ -36,6 +38,7 @@ def playlist(playlist_id):
     return jsonify(response)
 
 if __name__ == '__main__':
+    app.run(host='0.0.0.0')
     http_server = HTTPServer(WSGIContainer(app))
     http_server.listen(5000)
     IOLoop.instance().start()

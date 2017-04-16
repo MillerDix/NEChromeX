@@ -65,7 +65,7 @@ APIModule.myList = function() {
         }
     })
     .fail(function(e) {
-        alert(e);
+        console.log(e);
     })
     .always(function() {console.log('mylist complete');});
 }
