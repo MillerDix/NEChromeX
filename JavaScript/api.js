@@ -1,7 +1,8 @@
 let APIModule = {};
 // api
 let main_domain = "http://127.0.0.1:5000";
-// main_domain = "http://104.223.65.66:5000";
+main_domain = "http://104.223.65.66:5000";  // VPS LA.
+main_domain = "http://121.41.12.223:5000"   // VPS Alibaba
 // let  = {
 //     test: main_domain+'/test',
 //     login: main_domain+'login',

@@ -18,7 +18,8 @@
         "activeTab",
         "tabs",
         "https://ajax.googleapis.com/",
-        "http://104.223.65.66:5000/*",
+        "http://104.223.65.66:5000/*",  /*VPS LA*/
+        "http://121.41.12.223:5000/*",  /*VPS ALIBABA*/
         "http://127.0.0.1:5000/*"
     ],
 
