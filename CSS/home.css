@@ -285,3 +285,15 @@ div.album-pic {
 .f-r {
     float: right;
 }
+
+.visualizer {
+    text-align: center;
+}
+.control-widget {
+    text-align: center;
+    vertical-align: middle;
+}
+.control-widget audio {
+    margin-top: 8px;
+    width: 75%;
+}

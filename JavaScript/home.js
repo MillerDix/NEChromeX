@@ -35,5 +35,9 @@
         // let el_close = document.getElementById("music-close");
         // el_close.addEventListener("click", music_box);
 
+        //下一首
+        $("#next_song").click(APIModule.nextSong);
+        $("#previous_song").click(APIModule.previousSong);
+
     }
 })();
