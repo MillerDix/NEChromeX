@@ -132,18 +132,23 @@ APIModule.playSong = function(data, index) {
 
 // 下一首
 APIModule.nextSong = function() {
-    
-    if(APIModule.currentSelection.song.index === APIModule.playlist_detail.length - 1){
-        APIModule.playSong(APIModule.playlist_detail[0], 0);
+    if(!this.currentSelection.song.element) {
+        return;
+    }
+    if(this.currentSelection.song.index === this.playlist_detail.length - 1){
+        this.playSong(this.playlist_detail[0], 0);
     }else{
-        APIModule.playSong(APIModule.playlist_detail[APIModule.currentSelection.song.index+1], APIModule.currentSelection.song.index+1);
+        this.playSong(this.playlist_detail[this.currentSelection.song.index+1], this.currentSelection.song.index+1);
     }
     
 }
 APIModule.previousSong = function() {
-    if(APIModule.currentSelection.song.index === 0){
-        APIModule.playSong(APIModule.playlist_detail[APIModule.playlist_detail.length-1], APIModule.playlist_detail.length-1);
+    if(!this.currentSelection.song.element) {
+        return;
+    }
+    if(this.currentSelection.song.index === 0){
+        this.playSong(this.playlist_detail[this.playlist_detail.length-1], this.playlist_detail.length-1);
     }else{
-        APIModule.playSong(APIModule.playlist_detail[APIModule.currentSelection.song.index-1], APIModule.currentSelection.song.index-1);
+        this.playSong(this.playlist_detail[this.currentSelection.song.index-1], this.currentSelection.song.index-1);
     }
 }
