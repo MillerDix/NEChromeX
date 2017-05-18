@@ -166,19 +166,24 @@ div.sidebar {
     border-radius: 2px;
     background-color: maroon;
 }
+div.sidebar ul.mylist,
 div.sidebar ul.playlist_detail {
     height: 1px;
 }
 div.main-content {
     width: 70%;
     vertical-align: top;
+    text-align: center;
 }
 div.song-info {
-    width: 100%;
-    text-align: center;
+    width: 75%;
+    margin-left: 12.5%;
     padding-top: 20px;
+    text-align: left;
 }
-.song-info div {
+.song-info div.col {
+    /*width: 25%;*/
+    height: 400px;
     display: inline-block;
     vertical-align: top;
     font-size: 12px;
@@ -302,6 +307,9 @@ div.album-pic {
 }
 .f-r {
     float: right;
+}
+.m-r {
+    margin-right: 20px;
 }
 
 .visualizer {

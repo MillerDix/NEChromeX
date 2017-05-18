@@ -27,7 +27,7 @@ def hot_list():
 
 @app.route('/mylist', methods=['POST'])
 def mylist():
-    response = api.user_playlist(9586316)
+    response = api.user_playlist(17768840)
     return jsonify(response)
 
 @app.route('/playlist/<playlist_id>', methods=['POST'])

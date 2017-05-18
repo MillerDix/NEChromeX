@@ -44,7 +44,7 @@ APIModule.myList = function() {
     })
     .done(function(data) {
         for (let i = 0; i < data.length; i++) {
-            if (data[i].creator.userId === 9586316) {
+            if (data[i].creator.userId === 17768840) {
                 let li = $("<li class='myalbum'>" + data[i]['name'] + "</li>");
 
                 // 获取歌单详情
@@ -116,6 +116,7 @@ APIModule.playlistDetail = function(playlistId) {
 
 // 播放 通过songUrl
 APIModule.playSong = function(data, index) {
+    console.log(data);
     // 选中状态控制
     if (this.currentSelection.song.element !== '') {
         this.currentSelection.song.element.css("background-color", "transparent");
@@ -126,7 +127,9 @@ APIModule.playSong = function(data, index) {
     this.currentSelection.song.index = index;
     // 歌曲信息展示
     $("#playing-pic").attr("src", data['album']['picUrl']);
-                // 播放
+    $("#artists").html(data.artists[0].name);
+    $("#album").html(data.album.name);
+    // 播放
     $("#player").attr("src", data['mp3Url']);
 }
 
